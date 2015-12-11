@@ -345,15 +345,6 @@ class SCLog {
             $this->processID = getmypid();
             $this->myUID = getmyuid();
 
-            if ($this->extSignature == DEFAULT_SIG) //not logging for an extension
-            {
-	            $extDirString = self::_sanitizeFilename($this->extName);
-	            $this->extObject = 0;
-	            $this->extDir = $this->dir . '/' . $extDirString;
-                $this->logFile = sprintf("%s/%s.csv", $this->extDir, date("Y-m-d"));	            
-	            return;	            		            
-            }
-
             $scExtQry = sprintf("SELECT * FROM SvcVentures.scProductExtension where Signature like '%s'", $this->extSignature);
             $extRows = RNCPHP\ROQL::query($scExtQry)->next();
             if ($extRows->count() > 0) {
@@ -457,7 +448,7 @@ class SCLog {
 	{
 		if (utf8_decode($value) > MAX_STRING_BYTES)
 		{
-			return utf8_encode(substr(utf8_decode($value), 0, 255));
+			return utf8_encode(substr(utf8_decode($value), 0, MAX_STRING_BYTES));
 		}
 		else
 		{
