@@ -5,13 +5,13 @@
  * exist on a site, easy to configure, and how they are performing regardless of what the pieces are; Add-ins, CP controllers,
  * CPMs, Custom Scripts, etc.
  *
- * SCLog was created by Service Ventures LLC. (servicecloudedge.com) and is being released under an MIT License.
+ * SCLog was created by Service Ventures Inc. (servicecloudedge.com) and is being released under an MIT License.
  * 
  * For more features including write to file, a web based log file browser, additional logging options and integration
  * support check out SCLog PRO at servicecloudedge.com
  *
- * @copyright   Service Ventures LLC - 2015
- * @author      Service Ventures LLC <info@servicecloudedge.com>
+ * @copyright   Service Ventures Inc. - 2016
+ * @author      Service Ventures Inc. <info@servicecloudedge.com>
  * @license     MIT
  * @package     ServiceVentures
  * @version     1.1
@@ -427,15 +427,6 @@ class SCLog {
                 exit();
             }
         }
-
-        if (!file_exists($this->logFile)) { // make a SC Extension specific log directory
-            // Create log file
-            $this->writeCsv($this->headers);
-            $server = "";
-            foreach ($_SERVER as $idx => $val) {
-                $server .= sprintf("%s: %s\n", $idx, $val);
-            }
-        }
     }
 
     protected function timeElapsed() {
@@ -446,9 +437,9 @@ class SCLog {
 
 	private function _trimMaxLengthString($value)
 	{
-		if (utf8_decode($value) > MAX_STRING_BYTES)
+		if (utf8_decode($value) > self::MAX_STRING_BYTES)
 		{
-			return utf8_encode(substr(utf8_decode($value), 0, MAX_STRING_BYTES));
+			return utf8_encode(substr(utf8_decode($value), 0, self::MAX_STRING_BYTES));
 		}
 		else
 		{

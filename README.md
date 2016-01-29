@@ -34,7 +34,7 @@ provides basic log-viewing functionality
 
     
 ### License
-This add-in was developed by Service Ventures LLC [servicecloudedge.com](http://servicecloudedge.com) and is provided free of charge under an MIT license, without warranty.
+This add-in was developed by Service Ventures Inc. [servicecloudedge.com](http://servicecloudedge.com) and is provided free of charge under an MIT license, without warranty.
 
 ### SCLog Pro
 Consider upgrading to SCLog Pro to receive: 
